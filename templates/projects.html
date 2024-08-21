@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{url_for('static', filename='js/projects.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&amp;_cacheOverride=1718074597376" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+    <title>Projects</title>
+{% endblock %}
+
+{% block body %}
+     <nav>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="{{ url_for('index')}}">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="{{ url_for('ctf')}}">CTF</a></li>
+        </ul>
+        <ul>
+            <li><a href="#" class="myname">Wei Kiat</a></li>
+            <li class="hideonmobile"><a href="{{url_for('index')}}">Home</a></li>
+            <li class="hideonmobile"><a href="#">Projects</a></li>
+            <li class="hideonmobile"><a href="{{ url_for('ctf')}}">CTF</a></li>
+            <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+
+    <div class="bg-blob">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <path class="the-blob" fill="#3E6FF4"
+                d="M40.3,-55.4C48.9,-40.7,50.5,-24.9,53.7,-9.1C56.9,6.7,61.7,22.5,57.2,35.7C52.7,48.8,39,59.2,25.1,60.7C11.2,62.1,-3,54.6,-12.6,46.2C-22.3,37.7,-27.4,28.2,-38.8,17.9C-50.3,7.5,-68,-3.8,-69.7,-15.5C-71.5,-27.1,-57.1,-39,-42.8,-52.7C-28.5,-66.4,-14.3,-81.8,0.8,-82.7C15.8,-83.6,31.6,-70,40.3,-55.4Z"
+                transform="translate(200 130)" />
+        </svg>
+
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <path class="the-blob2" fill="#3E6FF4"
+                d="M40.3,-55.4C48.9,-40.7,50.5,-24.9,53.7,-9.1C56.9,6.7,61.7,22.5,57.2,35.7C52.7,48.8,39,59.2,25.1,60.7C11.2,62.1,-3,54.6,-12.6,46.2C-22.3,37.7,-27.4,28.2,-38.8,17.9C-50.3,7.5,-68,-3.8,-69.7,-15.5C-71.5,-27.1,-57.1,-39,-42.8,-52.7C-28.5,-66.4,-14.3,-81.8,0.8,-82.7C15.8,-83.6,31.6,-70,40.3,-55.4Z"
+                transform="translate(200 130)" />
+        </svg>
+    </div>
+    <div class="container">
+        <div class="title">
+            <h1 class="projects">Projects</h1>
+        </div>
+        <div class="row">
+            <div class="portfolio-item col-sm-4">
+                <div class="portfolio-item__wrapper" data-demo="https://weiki.xyz" data-title="Drishya Lounge">
+                    <div class="portfolio-item__demo">
+                        <img src="{{url_for('static', filename='img/EAE.png')}}">
+                        <span class="quick-view">
+                            <span class="quick-demo">Preview</span>
+                        </span>
+                    </div>
+                    <div class="portfolio-item__title">
+                        <h2>EAE Portfolio</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item col-sm-4">
+                <div class="portfolio-item__wrapper" data-demo="https://0070.weiki.xyz/" data-title="Drishya Lounge">
+                    <div class="portfolio-item__demo">
+                        <img src="{{url_for('static', filename='img/0070.png')}}">
+                        <span class="quick-view">
+                            <span class="quick-demo">Preview</span>
+                        </span>
+                    </div>
+                    <div class="portfolio-item__title">
+                        <h2>Project 0070</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="iframe-content" style="display: none;">
+        <div class="iframe-title">
+            <div class="demo-title"></div>
+            <div class="devices-wrapper">
+                <div class="devices">
+                    <button type="button" class="preview-desktop" data-device-mode="desktop"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <rect x="0" fill="none" width="20" height="20" />
+                            <g>
+                                <path
+                                    d="M3 2h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1h-5v2h2c.55 0 1 .45 1 1v1H5v-1c0-.55.45-1 1-1h2v-2H3c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1zm13 9V4H4v7h12zM5 5h9L5 9V5z" />
+                            </g>
+                        </svg></button>
+                    <button type="button" class="preview-tablet" data-device-mode="tablet">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <rect x="0" fill="none" width="20" height="20" />
+                            <g>
+                                <path
+                                    d="M4 2h12c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1zm11 14V4H5v12h10zM6 5h6l-6 5V5z" />
+                            </g>
+                        </svg>
+                    </button>
+                    <button type="button" class="preview-mobile" data-device-mode="mobile">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <rect x="0" fill="none" width="20" height="20" />
+                            <g>
+                                <path
+                                    d="M6 2h8c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1zm7 12V4H7v10h6zM8 5h4l-4 5V5z" />
+                            </g>
+                        </svg>
+                    </button>
+                    <button type="button" class="preview-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <rect x="0" fill="none" width="20" height="20" />
+                            <g>
+                                <path
+                                    d="M12.12 10l3.53 3.53-2.12 2.12L10 12.12l-3.54 3.54-2.12-2.12L7.88 10 4.34 6.46l2.12-2.12L10 7.88l3.54-3.53 2.12 2.12z" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="site-loading">
+            <h3>Preview Loading...</h3>
+        </div>
+    </div>
+
+    <div class="tables-div">
+    <table>
+        <tr>
+            <th>Future Projects</th>
+            <th>Skills to Learn</th>
+            <th>Summary</th>
+            <th>Status</th>
+        </tr>
+
+         <tr>
+            <td>Python Honeypot</td>
+            <td>Python, Networking</td>
+            <td>Using python to emulate a bash shell and SSH connection.</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+            <td>KeyLogger</td>
+            <td>C langauge</td>
+            <td>Logging Keystroke and sending it to a remote server to store the keystrokes.</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+         <tr>
+            <td>Dictionary Cracking Tool</td>
+            <td>Golag</td>
+            <td>From a dictionary, try every word in the dictionary to see if there is a match with the password</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+
+         <tr>
+            <td>Vulnerable Web Server</td>
+            <td>Python, Database</td>
+            <td>Create a web server that is vulnerable to injection attacks, such that the dictionary cracking tool can be used.</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+
+         <tr>
+            <td>Wifi Scanner tool (With GUI)</td>
+            <td>Python, Networking</td>
+            <td>Scans for devices in local network, and output on the webpage</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+    </table>
+
+    </div>
+
+
+     <div class="mobiletables-div">
+    <table>
+        <tr>
+            <th>Future Projects</th>
+            <th>Skills to Learn</th>
+            <th>Status</th>
+        </tr>
+
+         <tr>
+            <td>Python Honeypot</td>
+            <td>Python, Networking</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+            <td>KeyLogger</td>
+            <td>C langauge</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+         <tr>
+            <td>Dictionary Cracking Tool</td>
+            <td>Golag</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+
+         <tr>
+            <td>Vulnerable Web Server</td>
+            <td>Python, Database</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+
+         <tr>
+            <td>Wifi Scanner tool (With GUI)</td>
+            <td>Python, Networking</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></td>
+        </tr>
+    </table>
+
+    </div>
+
+{% endblock %}

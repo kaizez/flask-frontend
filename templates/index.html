@@ -1,0 +1,285 @@
+{% extends 'base.html'%}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&amp;_cacheOverride=1718074597376" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+    <title>Portfolio</title>
+{% endblock %}
+
+{% block body%}
+   
+    <nav>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="{{url_for('project')}}">Projects</a></li>
+            <li><a href="{{url_for('ctf')}}">CTF</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Wei Kiat</a></li>
+            <li class="hideonmobile"><a href="#">Home</a></li>
+            <li class="hideonmobile"><a href="{{url_for('project')}}">Projects</a></li>
+            <li class="hideonmobile"><a href="{{url_for('ctf')}}">CTF</a></li>
+            <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+
+
+    <section class="intro">
+        <div class="words">
+            <h1>Hi there</h1>
+            <br>
+            <h1>I am , <span class="changecolor">Wei Kiat</span></h1>
+            <br>
+            <a href="mailto: wk@weiki.xyz" class="contact-button">Contact</a>
+        </div>
+        <div class="home__img" data-sr-id="2"
+            style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s;">
+            <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <mask id="mask0" mask-type="alpha">
+                    <path
+                        d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z">
+                    </path>
+                </mask>
+                <g mask="url(#mask0)">
+                    <path
+                        d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z">
+                    </path>
+                    <image class="home__blob-img" x="50" y="60" href=""></image>
+                </g>
+            </svg>
+        </div>
+    </section>
+
+    <section class="morse">
+        <section class="wei" id="box1">
+            <h2 class="letter1">W</h2>
+            <h2 class="letter2">E</h2>
+            <h2 class="letter3">I</h2>
+            <span class="item1"></span>
+            <span class="item2"></span>
+            <span class="item3"></span>
+            <span class="item4"></span>
+            <span class="item5"></span>
+            <span class="item6"></span>
+        </section>
+
+
+
+        <section class="kiat" id="box4">
+            <h2 class="letter4">K</h2>
+            <h2 class="letter5">I</h2>
+            <h2 class="letter6">A</h2>
+            <h2 class="letter7">T</h2>
+            <span class="item7"></span>
+            <span class="item8"></span>
+            <span class="item9"></span>
+            <span class="item10"></span>
+            <span class="item11"></span>
+            <span class="item12"></span>
+            <span class="item13"></span>
+            <span class="item14"></span>
+        </section>
+    </section>
+
+
+    <section class="pc-collage">
+
+        <div id="About" class="collage">
+            <div class="stackable-left">
+                <div id="image3">
+                    <svg viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#3E6FF4"
+                            d="M9,-18.4C12.6,-11.7,17,-10.8,22,-7.7C27,-4.7,32.5,0.4,33.9,6.3C35.3,12.3,32.6,19.1,27.4,22.3C22.3,25.5,14.8,25.1,5.1,36.6C-4.5,48.2,-16.2,71.7,-26.6,75.5C-36.9,79.3,-45.9,63.4,-43.9,47.9C-41.8,32.5,-28.8,17.4,-34.1,2.9C-39.3,-11.6,-62.8,-25.5,-63.8,-31.5C-64.8,-37.5,-43.2,-35.6,-28.8,-37.3C-14.4,-39.1,-7.2,-44.5,-2.2,-41C2.7,-37.5,5.4,-25.1,9,-18.4Z"
+                            transform="translate(65 50)" />
+                    </svg>
+                </div>
+
+                <div class="stackable-right">
+                    <div id="image4">
+                        <p class="text-inside">My name is Wei Kiat, and I am currently a student at Nanyang Polytechnic,
+                            where I am pursuing a degree in cybersecurity. My passion for the IT field started during my
+                            secondary school years, where I engaged in various projects that fueled my interest in
+                            technology. Over time, I have honed my skills in web design and Python, which have become my
+                            primary areas of expertise.
+                    </div>
+                    <div id="image5">
+                        <p class="the-text-inside">
+                            My professional goal is to deepen my knowledge and expertise in cybersecurity, with the
+                            aspiration of building a career in this dynamic and crucial sector. Outside of my academic
+                            pursuits, I enjoy cycling and make it a point to exercise regularly during my free time.
+                            This balance of intellectual and physical activity keeps me energized and motivated to
+                            achieve my ambitions in the cybersecurity field.</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="other-collage">
+        <div class="about-me-intro">
+            <h1>About</h1>
+            <div class="underline">&nbsp;</div>
+        </div>
+        <br>
+        <br>
+        <h1 class="about-me">
+            My name is Wei Kiat, and I am currently a student at Nanyang Polytechnic, where I am pursuing a degree in
+            cybersecurity. My passion for the IT field started during my secondary school years, where I engaged in
+            various projects that fueled my interest in technology. Over time, I have honed my skills in web design and
+            Python, which have become my primary areas of expertise.
+            <br><br>
+            My professional goal is to deepen my knowledge and expertise in cybersecurity, with the aspiration of
+            building a career in this dynamic and crucial sector. Outside of my academic pursuits, I enjoy cycling and
+            make it a point to exercise regularly during my free time. This balance of intellectual and physical
+            activity keeps me energized and motivated to achieve my ambitions in the cybersecurity field.
+        </h1>
+    </section>
+
+    <div class="timeline">
+        <h3 class="heading">Timeline</h3>
+        <div class="container">
+            <ul>
+                <li>
+                    <h3 class="title">Discovering my passion for computing</h3>
+                    <p>In secondary one, I explored ethical hacking, learning about Kali Linux, terminal commands, and
+                        tools like SEToolkit and Nmap, testing them in a virtual machine environment.</p>
+                    <a class="read-more" onclick="popup('popup-container-1')">Read More ></a>
+                    <span class="circle"></span>
+                    <span class="date">2020</span>
+                </li>
+
+                <li>
+                    <h3 class="title">A change of heart</h3>
+                    <p>As a secondary two student, I explored web development inspired by "NetworkChuck" on YouTube.
+                        Project 0070 taught me HTML basics and resilience, reinforcing my love for computing.</p>
+                    <a class="read-more" onclick="popup('popup-container-2')">Read More ></a>
+                    <span class="circle"></span>
+                    <span class="date">2021</span>
+                </li>
+
+                <li>
+                    <h3 class="title">Embarking on new journeys</h3>
+                    <p>I automated password searches with Python, learning user input and conditional statements. I then
+                        created a digital portfolio website, enhancing my HTML and CSS skills. This project was my most
+                        challenging and rewarding experience.</p>
+                    <a class="read-more" onclick="popup('popup-container-3')">Read More ></a>
+                    <span class="circle"></span>
+                    <span class="date">2022</span>
+                </li>
+
+                <li>
+                    <h3 class="title">Filling my toolbox</h3>
+                    <p>I took Udemy courses on cybersecurity, learning about malware, hacking techniques, and the
+                        difference between cryptography and encryption. I also learned that blockchain hashes are not
+                        meant to be decrypted.</p>
+                    <a class="read-more" onclick="popup('popup-container-4')">Read More ></a>
+                    <span class="circle"></span>
+                    <span class="date">2023</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="popup-container-1">
+        <div class="popup-content-1">
+            <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-1')">&times;</span>
+            <h2>Discovering my passion for computing</h2>
+            <p>
+                This was when I was in secondary one, I was very lost and was trying to find something that I was
+                passionate about. I jumped from Gaming, to sports and ended up landing on computing.
+                <br>
+                <br>
+
+                During the June holidays, I tried to gain more knowledge about computers. Initially, I was very
+                interested in ethical hacking and wanted to pursue a path in penetration testing. Hence, I started
+                scouring the internet for courses related to ethical hacking, which led me to virtual machines and
+                operating systems such as Kali Linux. I also familiarized myself with the terminal as it is an essential
+                application for hacking. I learned basic commands such as "ls", "cd", "pwd", etc.
+                <br>
+                <br>
+
+                During this long holiday, I decided to continue from where I left off during the June holiday. Apart
+                from learning the primary commands, I started to get familiar with various tools such as "SEtoolkit,"
+                "Nmap," "Stormbreaker," and some DDoS tools. Of course, all of this was tested on a controlled virtual
+                machine and was tested by me.
+
+            </p>
+        </div>
+    </div>
+
+    <div class="popup-container-2">
+        <div class="popup-content-2">
+            <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-2')">&times;</span>
+            <h2>A Change of Heart</h2>
+            <p>
+                As a secondary two student, I found ethical hacking and penetration testing interesting but wanted to
+                try something new.
+                <br><br>
+                During the March holidays, I discovered a YouTube channel called "NetworkChuck" that teaches a wide
+                range of computing topics, including penetration testing, web development, and networking.
+                <br><br>
+                With my newfound web development knowledge, I started Project 0070 to learn how to make a website from
+                scratch and understand the programming language behind it. After researching free website hosting
+                services, I chose 000webhost for its beginner-friendly features and tutorials.
+                <br><br>
+                I searched for a starter index.html page and learned the basics of HTML, such as the structure and tag
+                pairs. I didn't create the content myself, as the project's purpose was to learn.
+                <br><br>
+                Project 0070 taught me the basics of HTML, using services like Cloudflare for SSL certificates, GitHub,
+                and CodePen for reference. The best lesson was resilience; despite many uncertainties, I didn't give up
+                and continued searching for tutorials. This project reinforced my love for computing. After its
+                completion, I felt bored and unsure of what to do next.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="popup-container-3">
+        <div class="popup-content-3">
+            <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-3')">&times;</span>
+            <h2>Embarking on a new journeys</h2>
+            <p>
+                I have a password table where I store all my passwords and wanted to automate searching for them using
+                Python. With no prior Python knowledge, I outlined my requirements: the code should prompt for input and
+                display platforms related to the entered alphabets. I learned about user input and conditional
+                statements through YouTube tutorials. This challenging project taught me valuable lessons, including the
+                potential use of dictionaries for efficiency.
+                <br><br>
+                I then created a digital portfolio website for EAE, inspired by an online project. Building secondary
+                pages linked to the main page, I improved my understanding of the 'div' tag and CSS for text alignment,
+                button styling, and rounded edges. Although I faced challenges, such as configuring different styles for
+                hyperlinks, I found solutions and learned to solve problems more efficiently. This portfolio project
+                connected my previous knowledge with new skills, making it my most challenging and rewarding project.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="popup-container-4">
+        <div class="popup-content-4">
+            <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-4')">&times;</span>
+            <h2>Fillin my toolbox</h2>
+            <p>
+                I started enrolling in online courses from Udemy, learning about cybersecurity, digital forensics,
+                encryption, and cryptography. These courses taught me about malicious malware like viruses, worms, and
+                trojans, and hacking techniques like brute force and DDoS attacks. I also learned the difference between
+                cryptography (the science behind encryptions) and encryption (the action of concealing data). A
+                misconception I had was cleared: while I thought decrypting the blockchain's SHA-256 hash could yield
+                cryptocurrency, I learned that hashes are not meant to be decrypted, making such attempts pointless.
+            </p>
+
+        </div>
+    </div>
+
+{% endblock%}

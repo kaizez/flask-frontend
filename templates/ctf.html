@@ -1,0 +1,379 @@
+{% extends 'base.html'%}
+
+{% block head%}
+    <link href="https://fonts.googleapis.com/css?family=Poppins&amp;_cacheOverride=1718074597376" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ctf.css')}}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+    <script src="{{url_for('static', filename='js/ctf.js')}}"></script>
+    <title>CTF Challenge</title>
+{% endblock %}
+
+{% block body%}
+    <a href="{{url_for('flag')}}"></a>
+
+    <nav>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path
+                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></a></li>
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="{{url_for('project')}}">Projects</a></li>
+            <li><a href="#">CTF</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Wei Kiat</a></li>
+            <li class="hideonmobile"><a href="{{url_for('index')}}">Home</a></li>
+            <li class="hideonmobile"><a href="{{url_for('project')}}">Projects</a></li>
+            <li class="hideonmobile"><a href="#">CTF</a></li>
+            <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                    </svg></a></li>
+        </ul>
+    </nav>
+
+
+
+    <div id="content-to-comment">
+    <div class="popup-container-1">
+        <div class="popup-content">
+        <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-1')" style="z-index: 100;">&times;</span>
+            <h2 class="ctf-title">The Invisible Password</h2>
+
+            <div class="Tags">
+                <h2>Tags:</h2>
+                <h3>Web </h3>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <p class="author" onclick="bug()">AUTHOR:WEI KIAT</p>
+            <h3 class="description-title">Description:</h3>
+            <p class="p-description">It seems the developer accidentally left some crucial information within the
+                webpage. Your mission is to locate the flag. Are you ready for the challenge? Submit the flag in the
+                format of CTF{Theflag}.</p>
+            <br>
+            <hr style="margin-left: 15px; width: 90%;">
+            <div class="Hints-block">
+                <table border="0">
+                    <td class="table1">
+                        <p>Hints</p>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#1f88f4">
+                            <path
+                                d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                        </svg>
+                </table>
+                <h3 class="hint-no" onclick="hint()">1</h3>
+                <div>
+                    <p class="hint-description">Perhaps you have found the flag, but you can't comprehand the
+                        whitespaces,
+                        how would you decode whitespaces?</p>
+                </div>
+            </div>
+            <hr style="margin-left: 15px; width: 90%; margin-top: 30px;">
+            <div id="result">
+                <p class="results"></p>
+            </div>
+            <div class="popup-container">
+            </div>
+            <div class="input-container">
+                <div class="flag-icon">
+                    <img src="{{url_for('static', filename='img/flag.png')}}" alt="Flag Logo">
+                </div>
+                <form method="">
+                    <input type="text" placeholder="CTF{FLAG}" id="Submit">
+                    <button class="Submitbutton" onclick="checkValue1(event)">Submit Flag</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="PC-view">
+        <div class="filters">
+            <table border="1">
+                <tr>
+                    <th>Difficulty</th>
+                </tr>
+                <tr>
+                    <td>All Difficulties</td>
+                </tr>
+                <tr>
+                    <td>Easy</td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Hard</td>
+                </tr>
+            </table>
+
+            <table border="1">
+                <tr>
+                    <th>Categories</th>
+                </tr>
+                <tr>
+                    <td>Web Exploitation</td>
+                </tr>
+                <tr>
+                    <td>Cryptography</td>
+                </tr>
+                <tr>
+                    <td>Reverse Engineering</td>
+                </tr>
+                <tr>
+                    <td>Forensics</td>
+                </tr>
+
+                <tr>
+                    <td>General Skills</td>
+                </tr>
+
+                <tr>
+                    <td>Binary Exploitation</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="challenges">
+            <div class="challenge-grid">
+                <div class="challenge-card" onclick="popup('popup-container-1')">
+                    <div class="challenge-info">
+                        <span>Web Exploitation</span>
+                        <span class="difficulty">Easy</span>
+                    </div>
+                    <h4>The Invisible Password</h4>
+                    <div class="solves">Using Tools online decode the hidden flag on the webpage</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Cryptography</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Crypto Puzzle</h4>
+                    <div class="solves">Decode a message encrypted with a simple cipher to reveal the flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Web Exploitation</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>SQL Sleuth</h4>
+                    <div class="solves">Exploit a vulnerable SQL query to extract the flag from a database.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Web Exploitation</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Script Injection</h4>
+                    <div class="solves">Use a cross-site scripting vulnerability to retrieve a hidden flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Web Exploitation</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Upload Exploit</h4>
+                    <div class="solves">Upload a file with a payload to gain access to a protected flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Steganography</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Pixel Secret</h4>
+                    <div class="solves">Uncover a flag hidden within an image file.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Reverse Engineering</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Binary Breakdown</h4>
+                    <div class="solves">Analyze and modify a binary file to find the flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Cryptography</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Hash Hunt</h4>
+                    <div class="solves">Use brute force or other techniques to crack a hashed password and retrieve the flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Network Analysis</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Packet Pursuit</h4>
+                    <div class="solves">Capture and analyze network traffic to find the flag.</div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-info">
+                        <span>Forensics</span>
+                        <span class="notcreated">Not Created</span>
+                    </div>
+                    <h4>Artifact Analysis</h4>
+                    <div class="solves">Examine a digital artifact to extract the flag hidden within.</div>
+                </div>
+
+            </div>
+            <div class="pagination">
+                <button class="page-button">1</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="invis-password">
+        <h2 class="ctf-title">The Invisible Password</h2>
+
+        <div class="Tags">
+            <h2>Tags:</h2>
+            <h3>Web </h3>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <p class="author" onclick="bug()">AUTHOR:WEI KIAT</p>
+        <h3 class="description-title">Description:</h3>
+        <p class="p-description">It seems the developer accidentally left some crucial information within the webpage.
+            Your mission is to locate the flag. Are you ready for the challenge? Submit the flag in the format of
+            CTF{Theflag}.</p>
+        <br>
+        <hr style="margin-left: 15px; width: 90%;">
+        <div class="Hints-block">
+            <table>
+                <td class="table1">
+                    <p>Hints</p>
+
+                <td><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1f88f4">
+                        <path
+                            d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                    </svg>
+
+            </table>
+            <h3 class="hint-no" onclick="hint()">1</h3>
+            <div>
+                <p class="hint-description">Perhaps you have found the flag, but you can't comprehand the whitespaces,
+                    how would you decode whitespaces?</p>
+            </div>
+        </div>
+        <hr style="margin-left: 15px; width: 90%; margin-top: 30px;">
+        <div id="result">
+            <p class="results"></p>
+        </div>
+        <div class="popup-container">
+            <div class="popup-content">
+                <span id="closePopupBtn" class="close" onclick="closepopup('popup-container')">&times;</span>
+                <h2>Congratulations!</h2>
+                <p>You have successfully completed the challenge!</p>
+                <img src="{{url_for('static', filename='img/party-icon-confetti-popper-illustration-png.webp')}}" alt="Celebration"
+                    style="width:100%;">
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="flag-icon">
+                <img src="{{url_for('static', filename='img/flag.png')}}" alt="Flag Logo">
+            </div>
+            <form method="">
+                <input type="text" placeholder="CTF{FLAG}" id="Submit">
+                <button class="Submitbutton" onclick="checkValue(event)">Submit Flag</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var originalContent = `
+            <div class="popup-container-1">
+                <div class="popup-content">
+                    <span id="closePopupBtn" class="close" onclick="closepopup('popup-container-1')" style="z-index: 100;">&times;</span>
+                    <h2 class="ctf-title">The Invisible Password</h2>
+                    <div class="Tags">
+                        <h2>Tags:</h2>
+                        <h3>Web</h3>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <br>
+                    <p class="author" onclick="bug()">AUTHOR: WEI KIAT</p>
+                    <h3 class="description-title">Description:</h3>
+                    <p class="p-description">
+                        It seems the developer accidentally left some crucial information within the
+                        webpage. Your mission is to locate the flag. Are you ready for the challenge? Submit the flag in the
+                        format of CTF{Theflag}.
+                    </p>
+                    <br>
+                    <hr style="margin-left: 15px; width: 90%;">
+                    <div class="Hints-block">
+                        <table border="0">
+                            <td class="table1">
+                                <p>Hints</p>
+                            <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f88f4">
+                                <path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                            </svg>
+                        </table>
+                        <h3 class="hint-no" onclick="hint()">1</h3>
+                        <div>
+                            <p class="hint-description">
+                                Perhaps you have found the flag, but you can't comprehend the
+                                whitespaces, how would you decode whitespaces?
+                            </p>
+                        </div>
+                    </div>
+                    <hr style="margin-left: 15px; width: 90%; margin-top: 30px;">
+                    <div id="result">
+                        <p class="results"></p>
+                    </div>
+                    <div class="popup-container">
+                    </div>
+                    <div class="input-container">
+                        <div class="flag-icon">
+                            <img src="{{url_for('static', filename='img/flag.png')}}" alt="Flag Logo">
+                        </div>
+                        <form method="">
+                            <input type="text" placeholder="CTF{FLAG}" id="Submit">
+                            <button class="Submitbutton" onclick="checkValue1(event)">Submit Flag</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        function manageContent() {
+            var container = document.getElementById('content-to-comment');
+            if (window.innerWidth < 1362) {
+                container.innerHTML = '';
+            } else {
+                if (!container.querySelector('.popup-container-1')) {
+                    container.innerHTML = originalContent;
+                }
+            }
+        }
+
+        manageContent();
+
+        window.addEventListener('resize', manageContent);
+    </script>
+    
+{% endblock %}

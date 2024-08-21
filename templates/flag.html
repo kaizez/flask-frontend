@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+
+{% block head%}
+    <title>Flag</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
+{%endblock%}
+
+{% block body%}
+    <pre>{{ content }}</pre>
+{% endblock %}
